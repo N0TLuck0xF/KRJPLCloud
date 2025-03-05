@@ -33,20 +33,42 @@
             line-height: 1.6em;
             margin-bottom: 15px;
         }
+        .cta-button-container {
+            text-align: center;
+        }
         .cta-button {
             background-color: #3498db;
             color: white;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             font-size: 1.2em;
+            position: relative;
             display: inline-block;
-            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transform: perspective(1px) translateZ(0);
         }
         .cta-button:hover {
             background-color: #2980b9;
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+        }
+        .cta-button:active {
+            transform: translateY(0);
+        }
+        .cta-button-container {
+            perspective: 1500px;
+        }
+        .cta-button-wrapper {
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.5s;
+        }
+        .cta-button-wrapper:hover {
+            transform: rotateY(180deg);
         }
         .service-card {
             background-color: #ffffff;
@@ -88,7 +110,31 @@
             <p>Build and host your KRJPLMod web app with ease.</p>
             <div class="price">$5 for Setup + $0.06 per hour billed monthly</div>
             <p>After you pay the one-time $5 fee, you'll only pay $0.06 per hour for hosting, billed monthly. The first hour of use is free!</p>
-            <a href="https://example.com/escrow_payment" class="cta-button">Buy Now & Deploy</a>
+
+            <!-- Custom Escrow Button -->
+            <div class="cta-button-container">
+                <form action="https://www.escrow.com/checkout" method="post">
+                    <input type="hidden" name="type" value="domain_name">
+                    <input type="hidden" name="non_initiator_email" value="bitoutlaws@gmail.com">
+                    <input type="hidden" name="non_initiator_id" value="3548011">
+                    <input type="hidden" name="non_initiator_role" value="seller">
+                    <input type="hidden" name="title" value="Web App Build Deployment Using KRJPLMod Programming Langugage">
+                    <input type="hidden" name="currency" value="USD">
+                    <input type="hidden" name="domain" value="https://n0tluck0xf.github.io/KRJPLCloud/">
+                    <input type="hidden" name="price" value="0.00">
+                    <input type="hidden" name="concierge" value="false">
+                    <input type="hidden" name="with_content" value="true">
+                    <input type="hidden" name="inspection_period" value="5">
+                    <input type="hidden" name="fee_payer" value="buyer">
+                    <input type="hidden" name="return_url" value="">
+                    <input type="hidden" name="button_types" value="both">
+                    <input type="hidden" name="auto_accept" value="0">
+                    <input type="hidden" name="auto_reject" value="0">
+                    <input type="hidden" name="item_key" value="1 webapp optional build and deployment (domain not included)">
+                    <button class="cta-button" type="submit">Buy With Escrow.com</button>
+                    <img src="https://t.escrow.com/1px.gif?name=bin&price=0.00&title=Web%20App%20Build%20Deployment%20Using%20KRJPLMod%20Programming%20Langugage&user_id=3548011" style="display: none;">
+                </form>
+            </div>
         </div>
 
         <h2>Why Choose Us?</h2>
@@ -105,3 +151,4 @@
     </footer>
 </body>
 </html>
+
